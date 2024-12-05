@@ -2,7 +2,7 @@
 
 ## Description
 
-Este proyecto es una aplicación web que permite realizar diversas operaciones de análisis de texto, como contar palabras, invertir texto, contar caracteres, y más. La aplicación está dividida en un frontend y un backend, los cuales están ejecutados y configurados con Docker para simplificar el despliegue.
+Este proyecto es una aplicación web que permite 
 
 ## Proyecto de Análisis de Texto
 
@@ -23,13 +23,11 @@ Este proyecto es una aplicación web que permite realizar diversas operaciones d
 
 ## Descripción del Proyecto
 
-- La aplicación de Análisis de Texto permite al usuario realizar varias operaciones sobre un texto ingresado. A través de un frontend desarrollado con Vue.js, el usuario puede seleccionar diferentes opciones de análisis y ver los resultados en tiempo real. El backend, desarrollado con FastAPI, procesa el texto y realiza los cálculos solicitados por el frontend. Ambas aplicaciones están configuradas para ejecutarse en contenedores Docker, lo que facilita su despliegue en cualquier sistema que soporte Docker.
+- 
 
-![image](https://github.com/user-attachments/assets/8415700d-a679-42c8-92dc-80f599445898)
 
 ## Estructura del Proyecto
 
-![image](https://github.com/user-attachments/assets/25505ea7-d54c-4ebc-8bd3-1520c9eefb7f)
 
 ## Configuración de Docker
 
@@ -49,7 +47,6 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
     env_file:
       - ./backend/.env
     ports:
@@ -57,16 +54,44 @@ services:
     volumes:
       - ./backend/app:/app/app
     depends_on:
-      - frontend
+      - db
+    networks:
+      - app-network
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "8080:8080"
     environment:
-      - VITE_API_URL=http://localhost:8000  # URL del backend
+      - VITE_API_URL=http://backend:8000
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: text_analyzer
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
+
 ```
 
 ## Explicación del Backend
@@ -75,11 +100,11 @@ El backend está desarrollado en Python usando FastAPI, un framework web rápido
 
 - main.py: Este archivo es el punto de entrada de la aplicación de FastAPI. Configura la API y establece los parámetros de CORS (Cross-Origin Resource Sharing) para permitir que el frontend acceda a la API.
 
-- Controlador (text_analyzer.py): El controlador gestiona las rutas que reciben las solicitudes desde el frontend. Aquí es donde se define la lógica para los endpoints de análisis de texto, los cuales llaman a servicios específicos para procesar el texto.
+- Controlador 
 
-- Servicios (text_service.py): Este archivo contiene la lógica principal de procesamiento de texto. Utiliza los métodos de cadenas de Python para contar palabras, invertir texto, buscar palabras específicas, etc.
+- Servicios 
 
-- Modelos (request_models.py): Este archivo define los modelos de datos usados en las solicitudes y respuestas. Permite a FastAPI validar los datos entrantes de manera sencilla.
+- Modelos 
 
 ## Explicación del Frontend
 
@@ -87,9 +112,6 @@ El frontend está desarrollado con Vue.js y se encarga de la interfaz gráfica c
 
 - App.vue: El componente principal de la aplicación, que sirve como contenedor para el componente de análisis de texto.
 
-- TextAnalyzer.vue: Este componente contiene la lógica de la interfaz. Proporciona botones para cada una de las operaciones de análisis (contar palabras, invertir texto, contar caracteres, etc.). Usa Axios para enviar las solicitudes al backend y mostrar los resultados.
-
-- Estilos: Utiliza Tailwind CSS para aplicar estilos a los botones y la interfaz de usuario, haciendo que la aplicación se vea moderna y responsiva.
 
 ## Cómo Ejecutar el Proyecto
 
@@ -110,11 +132,12 @@ $ docker-compose up --build
 Accede a la Aplicación:
 
 - Frontend: Abre un navegador y ve a http://localhost:8080.
-- Backend: La API de FastAPI está disponible en http://localhost:8000/docs#/.
+- Backend: La API de FastAPI está disponible en http://localhost:8000.
 
 
 ## Sigueme
 
 - Author - [maycol roa](https://www.linkedin.com/in/maycol-david-roa-trivi%C3%B1o-14b27a106/)
 - Website - [portafolio](https://maycol.webflow.io/about)
+
 
