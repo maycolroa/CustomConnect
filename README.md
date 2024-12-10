@@ -139,5 +139,6 @@ Accede a la Aplicación:
 
 - Author - [maycol roa](https://www.linkedin.com/in/maycol-david-roa-trivi%C3%B1o-14b27a106/)
 - Website - [portafolio](https://maycol.webflow.io/about)
-
+- Author - [alan]()
+- Author - [milet]()
 
