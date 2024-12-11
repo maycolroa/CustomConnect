@@ -5,17 +5,22 @@ FROM node:18
 WORKDIR /app
 
 # Copiar los archivos necesarios para instalar las dependencias
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json ./ 
 
 # Instalar las dependencias
 RUN npm install
 
+# Instalar TailwindCSS, PostCSS y Autoprefixer de forma global
+RUN npm install -g postcss-cli tailwindcss autoprefixer
+
 # Copiar el resto del código fuente
 COPY . .
+
+# Generar el archivo CSS con Tailwind
+RUN npx tailwindcss -i ./src/assets/main.css -o ./src/assets/styles/output.css
 
 # Exponer el puerto 8080
 EXPOSE 8080
 
 # Comando para iniciar el servidor de desarrollo
 CMD ["npm", "run", "dev"]
-

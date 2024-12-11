@@ -1,17 +1,30 @@
 <template>
-  <div class="login-container">
-    <div class="login-card">
-      <img src="@/assets/logo.png" alt="Logo Marketplace" class="login-logo" />
-      <h1>Marketplace</h1>
-      <p>Iniciar sesión</p>
-      <form @submit.prevent="handleLogin">
-        <label for="username">Usuario</label>
-        <input type="text" id="username" placeholder="Ingrese su usuario" v-model="form.username" />
-        <label for="password">Clave</label>
-        <input type="password" id="password" placeholder="Ingrese su clave" v-model="form.password" />
-        <button type="submit">Continuar</button>
+  <div class="flex h-screen">
+    <!-- Div izquierda: Logo -->
+    <div class="w-1/2 bg-yellow-700 flex items-center justify-center">
+      <img src="@/assets/logo.png" alt="Logo Marketplace" class="max-w-xs h-auto rounded-lg shadow-lg" />
+    </div>
+    <!-- Div derecha: Formulario -->
+    <div class="w-1/2 bg-white flex flex-col justify-center items-center p-8">
+      <h1 class="text-2xl font-bold text-gray-800">Marketplace</h1>
+      <p class="text-gray-600 mt-2">Iniciar sesión</p>
+      <form @submit.prevent="handleLogin" class="mt-6 w-3/4">
+        <div class="mb-4">
+          <label for="username" class="block text-sm text-gray-700">Usuario</label>
+          <input type="text" id="username" placeholder="Ingrese su usuario" v-model="form.username"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-sm text-gray-700">Clave</label>
+          <input type="password" id="password" placeholder="Ingrese su clave" v-model="form.password"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500" />
+        </div>
+        <button type="submit"
+          class="w-full bg-yellow-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300">
+          Continuar
+        </button>
       </form>
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="error" class="text-red-500 text-sm text-center mt-4">{{ error }}</p>
     </div>
   </div>
 </template>
@@ -41,37 +54,14 @@ const handleLogin = async () => {
 </script>
 
 <style scoped>
-/* Aquí van los estilos CSS */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #1a1a1a;
+/* Personalización adicional */
+img {
+  object-fit: cover;
+  /* Ajusta la imagen para que se vea mejor dentro del contenedor */
 }
 
-.h1 {
-  background-color: #1a1a1a;
-}
-
-.login-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-}
-
-.login-logo {
-  max-width: 100px;
-  margin-bottom: 1rem;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 1rem;
+/* Personalización de fondo y elementos */
+.bg-yellow-700 {
+  background-color: #D9892D;
 }
 </style>

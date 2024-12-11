@@ -18,3 +18,6 @@ def delete_product(db: Session, product_id: int):
         db.delete(db_product)
         db.commit()
     return db_product
+
+def get_all_products(db: Session):
+    return db.query(Product).all()
