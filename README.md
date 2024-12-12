@@ -104,6 +104,14 @@ frontend/
 
 ```
 
+## Diseño UI/UX (Figma)
+
+El diseño de la interfaz fue desarrollado en Figma, siguiendo principios de diseño centrado en el usuario y mejores prácticas de UI/UX para crear una experiencia intuitiva y atractiva.
+
+![image](https://github.com/user-attachments/assets/52ef395d-b221-4024-ab94-a5e2eb49242c)
+
+- [Figma](https://www.figma.com/design/sWERsnyCtVGoN2RLYikHyN/portafolio?node-id=576-631&m=dev&t=3CIpzui1FmPH4FyL-1)
+
 ## Configuración de Docker
 
 Implementación de Docker en el Proyecto
@@ -257,7 +265,6 @@ Accede a la Aplicación:
 ## Sigueme
 
 - Author - [maycol roa](https://www.linkedin.com/in/maycol-david-roa-trivi%C3%B1o-14b27a106/)
-- Website - [portafolio](https://maycol.webflow.io/about)
 
 - Author - [Alam Crhistopher Alvarez Vargas](https://www.linkedin.com/in/alam-alvarez-986b742b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
