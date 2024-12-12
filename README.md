@@ -4,6 +4,10 @@
 
 El proyecto busca desarrollar una página web intuitiva para que pequeños productores puedan vender sus productos con mayor visibilidad. La plataforma se enfocará en brindar una excelente experiencia de usuario mediante una interfaz fácil de usar, con funciones como búsqueda de productos, categorización y gestión del carrito de compras. El éxito se medirá a través de indicadores de satisfacción del cliente, aumento en ventas y ticket promedio. La metodología incluirá definición de objetivos, planeación, desarrollo, integración y pruebas finales para verificar resultados.
 
+## diagrama
+
+![image](https://github.com/user-attachments/assets/ef66a7ad-f3ea-4cbe-8607-01aa8e9d9d65)
+
 ## Tecnologías Utilizadas
 
 ### Frontend
