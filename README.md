@@ -2,11 +2,33 @@
 
 ## Description
 
-Este proyecto es una aplicación web que permite 
+El proyecto busca desarrollar una página web intuitiva para que pequeños productores puedan vender sus productos con mayor visibilidad. La plataforma se enfocará en brindar una excelente experiencia de usuario mediante una interfaz fácil de usar, con funciones como búsqueda de productos, categorización y gestión del carrito de compras. El éxito se medirá a través de indicadores de satisfacción del cliente, aumento en ventas y ticket promedio. La metodología incluirá definición de objetivos, planeación, desarrollo, integración y pruebas finales para verificar resultados.
 
-## Proyecto de Análisis de Texto
+## Tecnologías Utilizadas
 
-- Descripción del Proyecto
+### Frontend
+- Vue.js 3
+- TypeScript
+- Tailwind CSS
+- Vite
+- Node.js
+
+### Backend
+- Python 3.8+
+- FastAPI
+- SQLAlchemy
+- Pydantic
+- JWT para autenticación
+
+### Base de Datos
+- MySQL 8.0
+
+### Infraestructura
+- Docker
+- Docker Compose
+- Nginx
+
+## Proyecto CustomConnect: Sitio web de innovación digital para productos personalizados del comercio local.
 
 - Estructura del Proyecto
 
@@ -23,23 +45,93 @@ Este proyecto es una aplicación web que permite
 
 ## Descripción del Proyecto
 
-- 
+- Este proyecto consiste en una plataforma de comercio electrónico diseñada específicamente para pequeños productores, permitiéndoles mostrar y vender sus productos en línea. La plataforma está construida con una arquitectura moderna y escalable, utilizando tecnologías de última generación para garantizar un rendimiento óptimo y una experiencia de usuario excepcional.
 
 
 ## Estructura del Proyecto
 
+### Estructura General
+```
+CUSTOMCONNECT/
+├── .vscode/
+├── backend/
+├── frontend/
+├── docker-compose.yml
+└── README.md
+```
+
+### Backend (Python)
+```
+backend/
+├── app/
+│   ├── _pycache_/
+│   ├── controllers/
+│   ├── models/
+│   ├── schemas/
+│   ├── services/
+│   └── utils/
+├── database.py
+├── main.py
+├── .env
+├── Dockerfile
+└── requirements.txt
+
+```
+
+### Frontend (Vue.js)
+```
+frontend/
+├── .vscode/
+├── node_modules/
+├── public/
+├── src/
+├── .editorconfig
+├── .gitignore
+├── .prettierrc.json
+├── docker-compose.yml
+├── env.d.ts
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── Dockerfile
+
+```
 
 ## Configuración de Docker
 
-Docker se utiliza para crear y ejecutar contenedores que contengan el backend y el frontend de la aplicación. Esto asegura que la aplicación se ejecute en un entorno controlado, eliminando conflictos de dependencias y permitiendo una fácil portabilidad.
+Implementación de Docker en el Proyecto
 
-Archivo docker-compose.yml
-El archivo docker-compose.yml permite ejecutar el frontend y el backend simultáneamente. Define dos servicios:
+### ¿Por qué Docker?
 
-Backend: Ejecuta el servidor de FastAPI en el puerto 8000.
-Frontend: Ejecuta la aplicación de Vue.js servida por nginx en el puerto 8080.
+Docker se implementa en este proyecto para proporcionar un entorno de desarrollo y despliegue consistente y reproducible. Las principales ventajas de usar Docker en este contexto son:
 
-archivo docker-compose.yml
+Consistencia del Entorno
+
+Elimina el clásico problema "funciona en mi máquina"
+Garantiza que todos los desarrolladores trabajen con las mismas versiones de dependencias
+Facilita la reproducción exacta del entorno de producción en desarrollo
+
+
+Aislamiento de Servicios
+
+Cada componente (frontend, backend, base de datos) se ejecuta en su propio contenedor
+Previene conflictos entre dependencias
+Permite gestionar recursos de manera independiente
+
+
+Facilidad de Despliegue
+
+Simplifica el proceso de despliegue en diferentes entornos
+Reduce el tiempo de configuración para nuevos desarrolladores
+Permite escalar servicios de manera independiente
+
 ```
 version: '3.8'
 
@@ -94,32 +186,58 @@ networks:
 
 ```
 
-## Explicación del Backend
+## Backend (Python/FastAPI)
 
 El backend está desarrollado en Python usando FastAPI, un framework web rápido y moderno que permite construir APIs de manera sencilla.
 
-- main.py: Este archivo es el punto de entrada de la aplicación de FastAPI. Configura la API y establece los parámetros de CORS (Cross-Origin Resource Sharing) para permitir que el frontend acceda a la API.
+### Componentes Principales
 
-- Controlador 
+- Controllers: Manejan las peticiones HTTP y la lógica de negocio
+- Models: Definen la estructura de datos y las relaciones
+- Schemas: Manejan la validación y serialización de datos
+- Services: Contienen la lógica de negocio principal
+- Utils: Funciones auxiliares y utilidades comunes 
 
-- Servicios 
+## Frontend (Vue.js) taildwindcss
 
-- Modelos 
+El frontend está desarrollado en Vue.js 3 junto con TypeScript, utilizando un stack moderno de herramientas y tecnologías que permiten crear una interfaz de usuario dinámica y eficiente.
 
-## Explicación del Frontend
+- Componentes: Elementos reutilizables de la interfaz
+- Stores: Gestión del estado con Pinia
+- Views: Páginas principales de la aplicación
+- Router: Configuración de rutas
 
-El frontend está desarrollado con Vue.js y se encarga de la interfaz gráfica con la que interactúa el usuario.
+## Base de Datos (MySQL) y ORM (SQLAlchemy)
 
-- App.vue: El componente principal de la aplicación, que sirve como contenedor para el componente de análisis de texto.
+### Base de Datos MySQL
 
+- Tablas Principales: Usuarios, Productos, Órdenes, Categorías
+- Relaciones: Manejo de relaciones uno a muchos y muchos a muchos
+- Índices: Optimización de búsquedas frecuentes
+- Triggers: Automatización de procesos de datos
+
+### SQLAlchemy ORM
+
+- Modelos: Representación de tablas como clases Python
+- Queries: Consultas programáticas y seguras
+- Migraciones: Control de versiones de la base de datos
+- Validaciones: Reglas de integridad y validación de datos
+
+### Ventajas Principales
+
+- Seguridad contra SQL injection
+- Código más mantenible y limpio
+- Abstracción de la base de datos
+- Facilidad en el manejo de relaciones
+
+![mermaid-diagram-2024-12-11-215625](https://github.com/user-attachments/assets/4913f5f8-3dc2-4268-b0d4-190c9af7400d)
 
 ## Cómo Ejecutar el Proyecto
 
 ```bash
 
-$ git clone https://github.com/tu_usuario/text_analyzer.git
-
-$ cd text_analyzer
+$ git clone https://github.com/tu_usuario/customconnect.git
+$ cd customconnect
 
 ```
 
@@ -133,12 +251,15 @@ Accede a la Aplicación:
 
 - Frontend: Abre un navegador y ve a http://localhost:8080.
 - Backend: La API de FastAPI está disponible en http://localhost:8000.
+- Documentación API: http://localhost:8000/docs
 
 
 ## Sigueme
 
 - Author - [maycol roa](https://www.linkedin.com/in/maycol-david-roa-trivi%C3%B1o-14b27a106/)
 - Website - [portafolio](https://maycol.webflow.io/about)
-- Author - [alan]()
-- Author - [milet]()
+
+- Author - [Alam Crhistopher Alvarez Vargas](https://www.linkedin.com/in/alam-alvarez-986b742b0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
+
+- Author - [Milet ruiz lozano](https://www.linkedin.com/in/milet-ruiz-940337206?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 
